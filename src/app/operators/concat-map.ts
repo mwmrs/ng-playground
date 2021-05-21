@@ -1,4 +1,4 @@
-import {of} from 'rxjs';
+import {of, Subscription} from 'rxjs';
 import {concatMap, map} from 'rxjs/operators';
 
 /**
@@ -7,7 +7,7 @@ import {concatMap, map} from 'rxjs/operators';
  * Alle Subscriptions zu den Inner-Observables werden in der Reihenfolge der Subscriptions abgearbeitet.
  * Keine Subscription zu den Inner-Observables wird gecancelt!
  */
-export function howtoConcatMap(): void {
+export function howtoConcatMap(): Subscription {
   const source$ = of(1, 2, 3);
   const inner$ = of('A', 'B', 'C');
 
@@ -17,5 +17,5 @@ export function howtoConcatMap(): void {
     ))
   );
 
-  result$.subscribe(console.log);
+  return result$.subscribe(console.log);
 }

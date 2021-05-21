@@ -1,4 +1,4 @@
-import {interval} from 'rxjs';
+import {interval, Subscription} from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
 
 /**
@@ -7,7 +7,7 @@ import {map, mergeMap} from 'rxjs/operators';
  * Die Reihenfolge ist daher nicht garantiert, aber es geht kein Wert verloren (<> exhaustMap).
  * Bzgl. der Subscriptions wie concatMap, aber es gibt keine Reihenfolge. Daher findet keine Serialisierung statt.
  */
-export function howtoMergeMap(): void {
+export function howtoMergeMap(): Subscription {
   const source$ = interval(1000);
   const inner$ = source$.pipe(map(val => val * 10));
 
@@ -17,5 +17,5 @@ export function howtoMergeMap(): void {
     ))
   );
 
-  result$.subscribe(console.log);
+  return result$.subscribe(console.log);
 }

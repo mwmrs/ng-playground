@@ -1,4 +1,4 @@
-import {interval} from 'rxjs';
+import {interval, Subscription} from 'rxjs';
 import {exhaustMap, map, tap} from 'rxjs/operators';
 import {delayedBy} from './util';
 
@@ -8,7 +8,7 @@ import {delayedBy} from './util';
  * Source-Observable ein weiteres neues Inner-Observable angelegt wird. Das führt dazu, dass alle Werte
  * aus dem Source-Observable, die währenddessen eintreffen, ignoriert werden.
  */
-export function howtoExhaustMap(): void {
+export function howtoExhaustMap(): Subscription {
   const source$ = interval(1000).pipe(
     tap(value => console.log('Source: ' + value))
   );
@@ -21,5 +21,5 @@ export function howtoExhaustMap(): void {
     ))
   );
 
-  result$.subscribe(console.log);
+  return result$.subscribe(console.log);
 }

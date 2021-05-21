@@ -6,7 +6,7 @@ import {concatMap, delay} from 'rxjs/operators';
  */
 export function randomDelayedCount(count = 10): Observable<number> {
   return range(1, count).pipe(
-    concatMap(i => of(i).pipe(delay(1000 + (Math.random() * 4000))))
+    concatMap(i => of(i).pipe(delay(100 + (Math.random() * 400))))
   );
 }
 

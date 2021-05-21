@@ -1,4 +1,4 @@
-import {interval} from 'rxjs';
+import {interval, Subscription} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {delayedBy} from './util';
 
@@ -7,10 +7,10 @@ import {delayedBy} from './util';
  * Die Subscription auf dieses Inner-Observable wird jedoch gecancelt, sobald ein neuer Wert
  * vom Source-Observable eintrifft. Daher gehen verbleibende Werte  aus dem letzten Inner-Observable verloren.
  * Es findet also immer ein Switch auf das neueste Inner-Observable statt.
- * (Anwendungsfall: type-ahead search, d.h. ein Backend-Search-Request wird abgebrochen - über einen AbortController -
- * wenn sich der Suche-String geändert hat.)
+ * Anwendungsfall: type-ahead search, d.h. ein Backend-Search-Request wird abgebrochen - über einen AbortController -
+ * wenn sich der Suche-String geändert hat.
  */
-export function howtoSwitchMap(): void {
+export function howtoSwitchMap(): Subscription {
   const source$ = interval(1000).pipe(
     tap(value => console.log('Source: ' + value))
   );
@@ -23,5 +23,5 @@ export function howtoSwitchMap(): void {
     ))
   );
 
-  result$.subscribe(console.log);
+  return result$.subscribe(console.log);
 }
