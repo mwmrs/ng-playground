@@ -10,6 +10,10 @@ export function randomDelayedCount(count = 10): Observable<number> {
   );
 }
 
+/**
+ * Erzeugt ein Observable, das in den angegeben Zeitabständen Strings emittiert.
+ * @param milliseconds die Zeitabstände zwischen den Emissionen
+ */
 export function delayedBy(milliseconds: number[]): Observable<string> {
   return new Observable<string>(sub => {
     milliseconds.forEach((value: number) => {
