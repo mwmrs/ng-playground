@@ -4,8 +4,9 @@ import {howtoMergeMap} from './operators/merge-map';
 import {howtoExhaustMap} from './operators/exhaust-map';
 import {howtoSwitchMap} from './operators/switch-map';
 import {fromEvent, Subscription} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 import {howtoDebouncetime} from './operators/debounce-time';
+import {howtoDelayWhen} from './operators/delay-when';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     fromEvent<any>(this.inputText?.nativeElement, 'keyup')
       .pipe(
-        map(event => event.target.value)
+        map(event => event.target.value),
+        startWith('startWidth on input-keyup') // ermöglicht einen Startwert, solang bis tatsächlich was kommt
       )
       .subscribe(console.log);
   }
@@ -48,6 +50,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onDebounceTime(): void {
     this.manageSubscription(howtoDebouncetime);
+  }
+
+  onDelayWhen(): void {
+    this.manageSubscription(howtoDelayWhen);
   }
 
   private manageSubscription(fn: () => Subscription): void {
