@@ -1,6 +1,7 @@
 import {interval, Subscription} from 'rxjs';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {delayedBy} from './util';
+import {debug, RxJsLoggingLevel} from './custom-debug';
 
 /**
  * Für jeden neuen Wert des Source-Observables wird ein neues Inner-Observable angelegt.
@@ -12,7 +13,7 @@ import {delayedBy} from './util';
  */
 export function howtoSwitchMap(): Subscription {
   const source$ = interval(1000).pipe(
-    tap(value => console.log('Source: ' + value))
+    debug(RxJsLoggingLevel.INFO, 'Source')
   );
 
   const inner$ = delayedBy([100, 300, 1200, 1500, 1700, 2200, 2600]);

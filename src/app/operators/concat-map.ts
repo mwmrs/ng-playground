@@ -2,10 +2,10 @@ import {of, Subscription} from 'rxjs';
 import {concatMap, map} from 'rxjs/operators';
 
 /**
- * concatMap serialisiert die Werte des Source-Observables mit den Werten des Inner-Observables,
- * d.h. kein Wert geht verloren (<> exhaustMap) und die Reihenfolge ist garantiert (<> mergeMap).
- * Alle Subscriptions zu den Inner-Observables werden in der Reihenfolge der Subscriptions abgearbeitet.
- * Keine Subscription zu den Inner-Observables wird gecancelt!
+ * concatMap serializes the values of the source observable with the values of the inner observable,
+ * this means no value is lost (<> exhaustMap) and the order is guaranteed (<> mergeMap).
+ * All subscriptions to the inner observables are processed in the order of the subscriptions.
+ * No subscription to the inner observables will be canceled!
  */
 export function howtoConcatMap(): Subscription {
   const source$ = of(1, 2, 3);

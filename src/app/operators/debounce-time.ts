@@ -1,6 +1,7 @@
-import {debounceTime, tap} from 'rxjs/operators';
+import {debounceTime} from 'rxjs/operators';
 import {randomDelayedCount} from './util';
 import {Subscription} from 'rxjs';
+import {debug, RxJsLoggingLevel} from './custom-debug';
 
 /**
  * debounceTime(dueTime) sortiert alle Werte des Source-Observables aus, die nicht mindestens die angegebene
@@ -12,7 +13,7 @@ export function howtoDebouncetime(): Subscription {
 
   return source$
     .pipe(
-      tap(value => console.log('Source', value)),
+      debug(RxJsLoggingLevel.INFO, 'Source'),
       debounceTime(200)
     )
     .subscribe(console.log);
