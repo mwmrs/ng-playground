@@ -4,9 +4,9 @@ import {Subscription} from 'rxjs';
 import {debug, RxJsLoggingLevel} from './custom-debug';
 
 /**
- * debounceTime(dueTime) sortiert alle Werte des Source-Observables aus, die nicht mindestens die angegebene
- * Zeit (in ms) stabil sind, d.h. das Source-Observable muss mindestens die angegeben Zeit 'schweigen',
- * damit der aktuelle Wert gelesen wird.
+ * debounceTime(dueTime) sorts out all values emitted by a source-observables that are not 'stable'.
+ * This means there mustn't be a subsequent value emitted by the given amount of time. Otherwise
+ * the first one will be ignored.
  */
 export function howtoDebouncetime(): Subscription {
   const source$ = randomDelayedCount();
