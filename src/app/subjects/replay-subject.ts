@@ -2,9 +2,9 @@ import {ReplaySubject, Subscription} from 'rxjs';
 import {generateRandom} from '../operators/util';
 
 /**
- * An AsyncSubject is a subject that always delivers the lates value.
- * So it doesn't matter when a subscription takes place. Every subscriber will receive the latest submission,
- * that means the last submission before completion.
+ * A ReplaySubject is a subject that always delivers all values emitted even to a late subscriber.
+ * So it doesn't matter when a subscription takes place. Every subscriber will receive the all submissions
+ * until the subject is completed.
  */
 export function howtoReplaySubject(): Subscription {
   const subject = new ReplaySubject<number>();
