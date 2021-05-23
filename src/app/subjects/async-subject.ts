@@ -12,8 +12,8 @@ export function howtoAsyncSubject(): Subscription {
 
   const subscription: any = values$.subscribe(val => console.log('early sub', val));
 
-  subject.next(generateRandom());
-  subject.next(generateRandom());
+  subject.next(generateRandom()); // ignored
+  subject.next(generateRandom()); // ignored
   subject.next(generateRandom());
   subject.complete(); // must complete in order to emit the latest value
 

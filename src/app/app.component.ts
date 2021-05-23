@@ -10,6 +10,7 @@ import {howtoDelayWhen} from './operators/delay-when';
 import {howtoSubject} from './subjects/subject';
 import {howtoBehaviorSubject} from './subjects/behavior-subject';
 import {howtoAsyncSubject} from './subjects/async-subject';
+import {howtoReplaySubject} from './subjects/replay-subject';
 
 @Component({
   selector: 'app-root',
@@ -69,6 +70,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onAsyncSubject(): void {
     this.manageSubscription(howtoAsyncSubject);
+  }
+
+  onReplaySubject(): void {
+    this.manageSubscription(howtoReplaySubject);
   }
 
   private manageSubscription(fn: () => Subscription): void {
