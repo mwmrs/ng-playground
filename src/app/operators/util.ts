@@ -22,3 +22,10 @@ export function delayedBy(milliseconds: number[]): Observable<string> {
     setTimeout(() => sub.complete(), Math.max(...milliseconds) + 100);
   });
 }
+
+export function generateRandom(min = 0, max = 100): number {
+  const DELTA = max - min;
+  const initialRandom = Math.random();
+  const multiplied = initialRandom * DELTA;
+  return Math.floor(multiplied) + min;
+}

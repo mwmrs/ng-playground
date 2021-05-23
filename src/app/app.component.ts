@@ -7,6 +7,8 @@ import {fromEvent, Subscription} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {howtoDebouncetime} from './operators/debounce-time';
 import {howtoDelayWhen} from './operators/delay-when';
+import {howtoSubject} from './subjects/subject';
+import {howtoBehaviorSubject} from './subjects/behavior-subject';
 
 @Component({
   selector: 'app-root',
@@ -54,6 +56,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onDelayWhen(): void {
     this.manageSubscription(howtoDelayWhen);
+  }
+
+  onSubject(): void {
+    this.manageSubscription(howtoSubject);
+  }
+
+  onBehaviorSubject(): void {
+    this.manageSubscription(howtoBehaviorSubject);
   }
 
   private manageSubscription(fn: () => Subscription): void {
