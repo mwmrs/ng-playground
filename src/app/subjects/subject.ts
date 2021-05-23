@@ -2,7 +2,7 @@ import {Subject, Subscription} from 'rxjs';
 import {generateRandom} from '../operators/util';
 
 /**
- * A subject acts as an emitter and subscriber simultaneously.
+ * A Subject acts as an emitter and subscriber simultaneously.
  */
 export function howtoSubject(): Subscription {
   const subject = new Subject<number>();

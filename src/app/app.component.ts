@@ -9,6 +9,7 @@ import {howtoDebouncetime} from './operators/debounce-time';
 import {howtoDelayWhen} from './operators/delay-when';
 import {howtoSubject} from './subjects/subject';
 import {howtoBehaviorSubject} from './subjects/behavior-subject';
+import {howtoAsyncSubject} from './subjects/async-subject';
 
 @Component({
   selector: 'app-root',
@@ -64,6 +65,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onBehaviorSubject(): void {
     this.manageSubscription(howtoBehaviorSubject);
+  }
+
+  onAsyncSubject(): void {
+    this.manageSubscription(howtoAsyncSubject);
   }
 
   private manageSubscription(fn: () => Subscription): void {

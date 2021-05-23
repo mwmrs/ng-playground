@@ -5,7 +5,7 @@ import {generateRandom} from '../operators/util';
  * A BevaviorSubject is instantiated with an initial value.
  * So every subscriber receives this initial value as soon as the subscription takes place.
  * Unless the subject isn't completed, late subscribers will receive the latest value that is emitted
- * by the BehaviorSubject although the subscription was active only after the last emission.
+ * by the BehaviorSubject although the subscription was active only after the latest submission.
  */
 export function howtoBehaviorSubject(): Subscription {
   const subject = new BehaviorSubject<number>(0);
